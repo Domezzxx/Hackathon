@@ -123,7 +123,6 @@ const ChatScreen = forwardRef(function ChatScreen({ onGoToBooking, onGoToDoctor 
     setIsTyping(false);
   };
 
-
   const handleScanMouth = () => {
     Alert.alert(
       'วิเคราะห์ฟัน',
@@ -212,8 +211,12 @@ const ChatScreen = forwardRef(function ChatScreen({ onGoToBooking, onGoToDoctor 
   };
 
   return (
-    <>
-      <ScrollView style={styles.body} ref={scrollViewRef} contentContainerStyle={{ paddingVertical: 20 }}>
+    <View style={styles.container}>
+      <ScrollView 
+        style={styles.body} 
+        ref={scrollViewRef} 
+        contentContainerStyle={{ paddingVertical: 20, flexGrow: 1, justifyContent: 'flex-end' }}
+      >
         {messages.map((msg, idx) => (
           <View key={idx} style={msg.role === 'user' ? styles.rowUser : styles.rowBot}>
             {msg.role === 'bot' && (
@@ -278,14 +281,22 @@ const ChatScreen = forwardRef(function ChatScreen({ onGoToBooking, onGoToDoctor 
           <Text style={styles.sendArrow}>ส่ง</Text>
         </TouchableOpacity>
       </View>
-    </>
+    </View>
   );
 });
 
 export default ChatScreen;
 
 const styles = StyleSheet.create({
-  body: { flex: 1, paddingHorizontal: 16, backgroundColor: C.bg },
+  container: { 
+    flex: 1, 
+    backgroundColor: C.bg 
+  },
+  body: { 
+    flex: 1, 
+    paddingHorizontal: 16, 
+    backgroundColor: C.bg 
+  },
 
   rowBot:  { flexDirection: 'row', marginBottom: 16, maxWidth: '88%', alignSelf: 'flex-start' },
   rowUser: { flexDirection: 'row-reverse', marginBottom: 16, maxWidth: '88%', alignSelf: 'flex-end' },
@@ -326,18 +337,27 @@ const styles = StyleSheet.create({
 
   footer: {
     flexDirection: 'row',
-    paddingHorizontal: 16, paddingTop: 10,
+    paddingHorizontal: 16, 
+    paddingTop: 10,
     paddingBottom: Platform.OS === 'ios' ? 30 : 16,
-    marginBottom: Platform.OS === 'android' ? 8 : 0,
+    marginBottom: 0, 
     backgroundColor: C.white,
-    borderTopWidth: 1, borderColor: C.border,
-    alignItems: 'flex-end', gap: 8,
+    borderTopWidth: 1, 
+    borderColor: C.border,
+    alignItems: 'center', 
+    gap: 8,
   },
   input: {
-    flex: 1, backgroundColor: C.orangeLight,
-    borderWidth: 1.5, borderColor: C.border,
-    borderRadius: 22, paddingHorizontal: 16, paddingVertical: 10,
-    fontSize: 14, color: C.text,
+    flex: 1, 
+    backgroundColor: C.orangeLight,
+    borderWidth: 1.5, 
+    borderColor: C.border,
+    borderRadius: 22, 
+    paddingHorizontal: 16, 
+    minHeight: 40,
+    paddingVertical: Platform.OS === 'ios' ? 10 : 8, 
+    fontSize: 14, 
+    color: C.text,
     maxHeight: 100,
   },
   sendBtn: {
