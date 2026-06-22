@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "DentBot AI",
+    "slug": "dentbot-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "dentbot",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFF8F4"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "th.ac.sut.dentbot"
+    },
+    "android": {
+      "package": "th.ac.sut.dentbot",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFF8F4"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "DentBot ขอเข้าถึงคลังภาพ เพื่อให้คุณส่งรูปฟันให้ AI หรือทันตแพทย์วิเคราะห์",
+          "cameraPermission": "DentBot ขอเข้าถึงกล้อง เพื่อถ่ายรูปฟันสำหรับการวิเคราะห์"
+        }
+      ],
+      "expo-status-bar"
+    ]
+  }
+}
